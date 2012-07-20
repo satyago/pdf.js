@@ -7,7 +7,7 @@ var PDFJS = {};
   // Use strict in our context only - users might not want it
   'use strict';
 
-  PDFJS.build = 'a630aa4';
+  PDFJS.build = '2242ad9';
 
   // Files are inserted below - see Makefile
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
@@ -3031,20 +3031,20 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
     // Marked content
 
     markPoint: function CanvasGraphics_markPoint(tag) {
-      TODO('Marked content');
+      // TODO Marked content.
     },
     markPointProps: function CanvasGraphics_markPointProps(tag, properties) {
-      TODO('Marked content');
+      // TODO Marked content.
     },
     beginMarkedContent: function CanvasGraphics_beginMarkedContent(tag) {
-      TODO('Marked content');
+      // TODO Marked content.
     },
     beginMarkedContentProps: function CanvasGraphics_beginMarkedContentProps(
                                         tag, properties) {
-      TODO('Marked content');
+      // TODO Marked content.
     },
     endMarkedContent: function CanvasGraphics_endMarkedContent() {
-      TODO('Marked content');
+      // TODO Marked content.
     },
 
     // Compatibility
