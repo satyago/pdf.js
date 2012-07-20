@@ -7,7 +7,7 @@ var PDFJS = {};
   // Use strict in our context only - users might not want it
   'use strict';
 
-  PDFJS.build = 'a667a87';
+  PDFJS.build = '377a96d';
 
   // Files are inserted below - see Makefile
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
@@ -64,8 +64,16 @@ function getPdf(arg, callback) {
   if ('progress' in params)
     xhr.onprogress = params.progress || undefined;
 
-  if ('error' in params)
-    xhr.onerror = params.error || undefined;
+  var calledErrorBack = false;
+
+  if ('error' in params) {
+    xhr.onerror = function errorBack() {
+      if (!calledErrorBack) {
+        calledErrorBack = true;
+        params.error();
+      }
+    }
+  }
 
   xhr.onreadystatechange = function getPdfOnreadystatechange(e) {
     if (xhr.readyState === 4) {
@@ -73,7 +81,8 @@ function getPdf(arg, callback) {
         var data = (xhr.mozResponseArrayBuffer || xhr.mozResponse ||
                     xhr.responseArrayBuffer || xhr.response);
         callback(data);
-      } else if (params.error) {
+      } else if (params.error && !calledErrorBack) {
+        calledErrorBack = true;
         params.error(e);
       }
     }
